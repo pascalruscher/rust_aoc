@@ -133,6 +133,14 @@ name = "aoc_2022_day06_b"
 version = "0.1.0"
 
 [[package]]
+name = "aoc_2022_day07_a"
+version = "0.1.0"
+
+[[package]]
+name = "aoc_2022_day07_b"
+version = "0.1.0"
+
+[[package]]
 name = "block-buffer"
 version = "0.10.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
