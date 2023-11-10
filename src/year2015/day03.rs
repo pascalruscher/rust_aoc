@@ -53,20 +53,20 @@ fn get_houses_b(data: String) -> HashMap<String, i32> {
     houses
 }
 
-pub fn solution_a() -> usize {
+pub fn solution_a() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day03_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_houses_a(data).len()
+    format!("{}", get_houses_a(data).len())
 }
 
-pub fn solution_b() -> usize {
+pub fn solution_b() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day03_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_houses_b(data).len()
+    format!("{}", get_houses_b(data).len())
 }
 
 #[cfg(test)]

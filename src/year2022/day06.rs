@@ -30,22 +30,22 @@ fn get_marker_position(data: String, sequence_length: usize) -> usize {
     0
 }
 
-pub fn solution_a() -> usize {
+pub fn solution_a() -> String {
     let mut data = String::new();
     let mut f = File::open("src/year2022/day06_input.txt").expect("Error on File::open");
     f.read_to_string(&mut data)
         .expect("Error on read_to_string");
 
-    get_marker_position(data, 4)
+    format!("{}", get_marker_position(data, 4))
 }
 
-pub fn solution_b() -> usize {
+pub fn solution_b() -> String {
     let mut data = String::new();
     let mut f = File::open("src/year2022/day06_input.txt").expect("Error on File::open");
     f.read_to_string(&mut data)
         .expect("Error on read_to_string");
     
-    get_marker_position(data, 14)
+    format!("{}", get_marker_position(data, 14))
 }
 
 #[cfg(test)]

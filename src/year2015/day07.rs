@@ -94,17 +94,17 @@ fn get_wire_values(wires: HashMap<String, Instruction>) -> HashMap<String, u16> 
     values
 }
 
-pub fn solution_a() -> u16 {
+pub fn solution_a() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day07_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
     let wires = parse(data);
     let wire_values = get_wire_values(wires.clone());
-    wire_values.get("a").unwrap().to_owned()
+    format!("{}", wire_values.get("a").unwrap().to_owned())
 }
 
-pub fn solution_b() -> u16 {
+pub fn solution_b() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day07_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
@@ -121,7 +121,7 @@ pub fn solution_b() -> u16 {
         },
     );
     wire_values = get_wire_values(wires);
-    wire_values.get("a").unwrap().to_owned()
+    format!("{}", wire_values.get("a").unwrap().to_owned())
 }
 
 #[cfg(test)]

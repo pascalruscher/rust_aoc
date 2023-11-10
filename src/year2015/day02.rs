@@ -43,20 +43,20 @@ fn get_total_feet(data: String) -> i32 {
     feet
 }
 
-pub fn solution_a() -> i32 {
+pub fn solution_a() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day02_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_total_square_feet(data)
+    format!("{}", get_total_square_feet(data))
 }
 
-pub fn solution_b() -> i32 {
+pub fn solution_b() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day02_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_total_feet(data)
+    format!("{}", get_total_feet(data))
 }
 
 #[cfg(test)]

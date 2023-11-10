@@ -109,7 +109,7 @@ fn calculate_size(folders: &HashMap<String, Folder>, folder_name: &String) -> u6
     size
 }
 
-pub fn solution_a() -> u64 {
+pub fn solution_a() -> String {
     let file = File::open("src/year2022/day07_input.txt").expect("Error on File::open");
     let data = file_to_vec::<String>(file);
 
@@ -125,10 +125,10 @@ pub fn solution_a() -> u64 {
         }
     }
 
-    solution
+    format!("{}", solution)
 }
 
-pub fn solution_b() -> u64 {
+pub fn solution_b() -> String {
     let file = File::open("src/year2022/day07_input.txt").expect("Error on File::open");
     let data = file_to_vec::<String>(file);
 
@@ -145,5 +145,5 @@ pub fn solution_b() -> u64 {
         }
     }
 
-    solution
+    format!("{}", solution)
 }

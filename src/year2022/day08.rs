@@ -156,14 +156,14 @@ fn get_tree_score(data: &Vec<Vec<u32>>) -> i32 {
     score
 }
 
-pub fn solution_a() -> i32 {
+pub fn solution_a() -> String {
     let file = File::open("src/year2022/day08_input.txt").expect("Error on File::open");
     let data = file_to_grid(file);
-    count_trees(&data)
+    format!("{}", count_trees(&data))
 }
 
-pub fn solution_b() -> i32 {
+pub fn solution_b() -> String {
     let file = File::open("src/year2022/day08_input.txt").expect("Error on File::open");
     let data = file_to_grid(file);
-    get_tree_score(&data)
+    format!("{}", get_tree_score(&data))
 }

@@ -70,16 +70,16 @@ fn get_sum_b(data: Vec<Option<String>>) -> usize {
     sum
 }
 
-pub fn solution_a() -> usize {
+pub fn solution_a() -> String {
     let file = File::open("src/year2022/day03_input.txt").expect("Error on File::open");
     let data = file_to_vec::<String>(file);
-    get_sum_a(data)
+    format!("{}", get_sum_a(data))
 }
 
-pub fn solution_b() -> usize {
+pub fn solution_b() -> String {
     let file = File::open("src/year2022/day03_input.txt").expect("Error on File::open");
     let data = file_to_vec::<String>(file);
-    get_sum_b(data)
+    format!("{}", get_sum_b(data))
 }
 
 #[cfg(test)]

@@ -31,12 +31,12 @@ fn solution(step: i32) -> usize {
     find_number(data, step)
 }
 
-pub fn solution_a() -> usize {
-    solution(5)
+pub fn solution_a() -> String {
+    format!("{}", solution(5))
 }
 
-pub fn solution_b() -> usize {
-    solution(6)
+pub fn solution_b() -> String {
+    format!("{}", solution(6))
 }
 
 #[cfg(test)]

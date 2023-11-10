@@ -70,16 +70,16 @@ fn get_contained_pairs(data: Vec<Option<String>>, day: &str) -> Vec<((i32, i32),
     contained_pairs
 }
 
-pub fn solution_a() -> usize {
+pub fn solution_a() -> String {
     let file = File::open("src/year2022/day04_input.txt").expect("Error on File::open");
     let data = file_to_vec::<String>(file);
-    get_contained_pairs(data, "a").len()
+    format!("{}", get_contained_pairs(data, "a").len())
 }
 
-pub fn solution_b() -> usize {
+pub fn solution_b() -> String {
     let file = File::open("src/year2022/day04_input.txt").expect("Error on File::open");
     let data = file_to_vec::<String>(file);
-    get_contained_pairs(data, "b").len()
+    format!("{}", get_contained_pairs(data, "b").len())
 }
 
 #[cfg(test)]

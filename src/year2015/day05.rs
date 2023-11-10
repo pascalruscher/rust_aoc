@@ -117,20 +117,20 @@ fn get_nice_strings(data: String, day: &str) -> Vec<String> {
     nice_strings
 }
 
-pub fn solution_a() -> usize {
+pub fn solution_a() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day05_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_nice_strings(data, "a").len()
+    format!("{}", get_nice_strings(data, "a").len())
 }
 
-pub fn solution_b() -> usize {
+pub fn solution_b() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day05_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_nice_strings(data, "b").len()
+    format!("{}", get_nice_strings(data, "b").len())
 }
 
 #[cfg(test)]

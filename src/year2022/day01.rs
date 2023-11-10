@@ -46,16 +46,16 @@ fn get_total_calories(data: Vec<Option<i32>>, day: &str) -> i32 {
     }
 }
 
-pub fn solution_a() -> i32 {
+pub fn solution_a() -> String {
     let file = File::open("src/year2022/day01_input.txt").expect("Error on File::open");
     let data = file_to_vec::<i32>(file);
-    get_total_calories(data, "a")
+    format!("{}", get_total_calories(data, "a"))
 }
 
-pub fn solution_b() -> i32 {
+pub fn solution_b() -> String {
     let file = File::open("src/year2022/day01_input.txt").expect("Error on File::open");
     let data = file_to_vec::<i32>(file);
-    get_total_calories(data, "b")
+    format!("{}", get_total_calories(data, "b"))
 }
 
 #[cfg(test)]

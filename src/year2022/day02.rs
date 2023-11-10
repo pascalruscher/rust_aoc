@@ -156,16 +156,16 @@ fn get_score(data: Vec<Option<String>>, day: &str) -> i32 {
 }
 
 
-pub fn solution_a() -> i32 {
+pub fn solution_a() -> String {
     let file = File::open("src/year2022/day02_input.txt").expect("Error on File::open");
     let data = file_to_vec::<String>(file);
-    get_score(data, "a")
+    format!("{}", get_score(data, "a"))
 }
 
-pub fn solution_b() -> i32 {
+pub fn solution_b() -> String {
     let file = File::open("src/year2022/day02_input.txt").expect("Error on File::open");
     let data = file_to_vec::<String>(file);
-    get_score(data, "b")
+    format!("{}", get_score(data, "b"))
 }
 
 #[cfg(test)]

@@ -35,20 +35,20 @@ fn get_basement_position(instructions: String) -> i32 {
     position
 }
 
-pub fn solution_a() -> i32 {
+pub fn solution_a() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day01_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_floor(data)
+    format!("{}", get_floor(data))
 }
 
-pub fn solution_b() -> i32 {
+pub fn solution_b() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day01_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_basement_position(data)
+    format!("{}", get_basement_position(data))
 }
 
 #[cfg(test)]

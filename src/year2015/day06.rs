@@ -116,20 +116,20 @@ fn get_brightness(matrix: HashMap<String, i32>) -> i32 {
     total_brightness
 }
 
-pub fn solution_a() -> usize {
+pub fn solution_a() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day06_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_light_count(set_light_matrix_a(data))
+    format!("{}", get_light_count(set_light_matrix_a(data)))
 }
 
-pub fn solution_b() -> i32 {
+pub fn solution_b() -> String {
     let mut data = String::new();
     let mut file = File::open("src/year2015/day06_input.txt").expect("Error on File::open");
     file.read_to_string(&mut data)
         .expect("Error on read_to_string");
-    get_brightness(set_light_matrix_b(data))
+    format!("{}", get_brightness(set_light_matrix_b(data)))
 }
 
 #[cfg(test)]
