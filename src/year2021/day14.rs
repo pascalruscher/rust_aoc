@@ -1,12 +1,9 @@
-use std::{
-    collections::HashMap,
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::{collections::HashMap, io::BufRead};
+
+use crate::utils::get_input_reader;
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day14_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day14_input.txt");
     let lines = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let mut polymer = lines[0].clone();
@@ -48,8 +45,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day14_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day14_input.txt");
     let lines = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let mut instructions: HashMap<String, String> = HashMap::new();

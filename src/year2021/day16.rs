@@ -1,7 +1,6 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::io::BufRead;
+
+use crate::utils::get_input_reader;
 
 pub fn parse_packet_a(packet: String, packet_limit: Option<u8>) -> u32 {
     if packet.len() == 0 || !packet.contains('1') {
@@ -139,8 +138,7 @@ pub fn hex_to_binary(hex: &str) -> String {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day16_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day16_input.txt");
 
     let mut input = String::new();
     reader.read_line(&mut input).unwrap();
@@ -150,8 +148,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day16_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day16_input.txt");
 
     let mut input = String::new();
     reader.read_line(&mut input).unwrap();
@@ -180,7 +177,10 @@ mod tests {
 
     #[test]
     fn test_parse_packet_a() {
-        assert_eq!(parse_packet_a(hex_to_binary("8A004A801A8002F478"), None), 16);
+        assert_eq!(
+            parse_packet_a(hex_to_binary("8A004A801A8002F478"), None),
+            16
+        );
         assert_eq!(
             parse_packet_a(hex_to_binary("620080001611562C8802118E34"), None),
             12

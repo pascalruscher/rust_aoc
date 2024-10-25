@@ -1,4 +1,6 @@
-use std::{fs::File, io::Read, collections::HashMap};
+use std::collections::HashMap;
+
+use crate::utils::get_input_string;
 
 fn is_nice_string_a(line: &str) -> bool {
     let mut vowel_count = 0;
@@ -105,12 +107,12 @@ fn get_nice_strings(data: String, day: &str) -> Vec<String> {
                 if is_nice_string_a(line) {
                     nice_strings.push(line.to_string());
                 }
-            },
+            }
             "b" => {
                 if is_nice_string_b(line) {
                     nice_strings.push(line.to_string());
                 }
-            },
+            }
             _ => {}
         }
     }
@@ -118,18 +120,12 @@ fn get_nice_strings(data: String, day: &str) -> Vec<String> {
 }
 
 pub fn solution_a() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day05_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day05_input.txt");
     format!("{}", get_nice_strings(data, "a").len())
 }
 
 pub fn solution_b() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day05_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day05_input.txt");
     format!("{}", get_nice_strings(data, "b").len())
 }
 

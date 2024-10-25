@@ -1,7 +1,6 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::io::BufRead;
+
+use crate::utils::get_input_reader;
 
 const GRID_SIZE: usize = 10;
 
@@ -46,8 +45,7 @@ pub fn flash(grid: &mut Vec<Vec<i8>>, y: i8, x: i8, flash_count: &mut u32) {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day11_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day11_input.txt");
     let rows = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let mut grid = vec![vec![0; GRID_SIZE]; GRID_SIZE];
@@ -97,8 +95,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day11_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day11_input.txt");
     let rows = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let mut grid = vec![vec![0; GRID_SIZE]; GRID_SIZE];

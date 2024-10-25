@@ -1,4 +1,6 @@
-use std::{collections::HashMap, fs::File, io::Read};
+use std::collections::HashMap;
+
+use crate::utils::get_input_string;
 
 fn get_houses_a(data: String) -> HashMap<String, i32> {
     let mut houses = HashMap::new();
@@ -54,18 +56,12 @@ fn get_houses_b(data: String) -> HashMap<String, i32> {
 }
 
 pub fn solution_a() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day03_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day03_input.txt");
     format!("{}", get_houses_a(data).len())
 }
 
 pub fn solution_b() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day03_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day03_input.txt");
     format!("{}", get_houses_b(data).len())
 }
 

@@ -1,4 +1,4 @@
-use std::{fs::File, io::{BufReader, BufRead}, str::FromStr};
+use crate::utils::get_input_vec;
 
 static LETTERS: [char; 52] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
@@ -6,30 +6,13 @@ static LETTERS: [char; 52] = [
     'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 ];
 
-fn file_to_vec<T: FromStr>(file: File) -> Vec<Option<T>> {
-    let reader = BufReader::new(file);
-    let mut data = Vec::new();
-
-    for line in reader.lines() {
-        data.push({
-            let this = line.unwrap().parse::<T>();
-            match this {
-                Ok(t) => Some(t),
-                Err(_) => None,
-            }
-        });
-    }
-
-    data
-}
-
 fn get_sum_a(data: Vec<Option<String>>) -> usize {
     let mut sum = 0;
 
     'outer: for line in data {
         let rucksack = line.unwrap();
-        let items_1 = &rucksack[..rucksack.len()/2];
-        let items_2 = &rucksack[rucksack.len()/2..];
+        let items_1 = &rucksack[..rucksack.len() / 2];
+        let items_2 = &rucksack[rucksack.len() / 2..];
         for item_1 in items_1.chars() {
             for item_2 in items_2.chars() {
                 if item_1 == item_2 {
@@ -42,7 +25,6 @@ fn get_sum_a(data: Vec<Option<String>>) -> usize {
 
     sum
 }
-
 
 fn get_sum_b(data: Vec<Option<String>>) -> usize {
     let mut sum = 0;
@@ -71,14 +53,12 @@ fn get_sum_b(data: Vec<Option<String>>) -> usize {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2022/day03_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<String>(file);
+    let data = get_input_vec::<String>("src/year2022/day03_input.txt");
     format!("{}", get_sum_a(data))
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2022/day03_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<String>(file);
+    let data = get_input_vec::<String>("src/year2022/day03_input.txt");
     format!("{}", get_sum_b(data))
 }
 

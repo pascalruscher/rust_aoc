@@ -1,4 +1,6 @@
-use std::{collections::HashMap, fs::File, io::Read};
+use std::collections::HashMap;
+
+use crate::utils::get_input_string;
 
 fn init_matrix_a(size: usize) -> HashMap<String, bool> {
     let mut matrix: HashMap<String, bool> = HashMap::new();
@@ -97,7 +99,6 @@ fn set_light_matrix_b(data: String) -> HashMap<String, i32> {
     matrix
 }
 
-
 fn get_light_count(matrix: HashMap<String, bool>) -> usize {
     let mut count: usize = 0;
     for (_, light) in matrix {
@@ -117,18 +118,12 @@ fn get_brightness(matrix: HashMap<String, i32>) -> i32 {
 }
 
 pub fn solution_a() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day06_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day06_input.txt");
     format!("{}", get_light_count(set_light_matrix_a(data)))
 }
 
 pub fn solution_b() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day06_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day06_input.txt");
     format!("{}", get_brightness(set_light_matrix_b(data)))
 }
 
@@ -180,7 +175,9 @@ mod tests {
     fn get_brightness_2() {
         // toggle 0,0 through 999,999 would increase the total brightness by 2000000
         assert_eq!(
-            get_brightness(set_light_matrix_b(String::from("toggle 0,0 through 999,999"))),
+            get_brightness(set_light_matrix_b(String::from(
+                "toggle 0,0 through 999,999"
+            ))),
             2000000
         );
     }

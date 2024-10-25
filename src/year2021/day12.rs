@@ -1,8 +1,6 @@
-use std::{
-    collections::HashMap,
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::{collections::HashMap, io::BufRead};
+
+use crate::utils::get_input_reader;
 
 pub fn count_paths_a(
     possible_moves: &HashMap<String, Vec<String>>,
@@ -73,8 +71,7 @@ pub fn count_paths_b(
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day12_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day12_input.txt");
 
     let mut possible_moves: HashMap<String, Vec<String>> = HashMap::new();
     for line in reader.lines() {
@@ -99,16 +96,18 @@ pub fn solution_a() -> String {
     }
 
     let visited_small_caves: Vec<String> = vec!["start".to_string()];
-    format!("{}", count_paths_a(
-        &possible_moves,
-        &visited_small_caves,
-        vec!["start".to_string()],
-    ))
+    format!(
+        "{}",
+        count_paths_a(
+            &possible_moves,
+            &visited_small_caves,
+            vec!["start".to_string()],
+        )
+    )
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day12_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day12_input.txt");
 
     let mut possible_moves: HashMap<String, Vec<String>> = HashMap::new();
     for line in reader.lines() {
@@ -133,9 +132,12 @@ pub fn solution_b() -> String {
     }
 
     let visited_small_caves: Vec<String> = vec!["start".to_string()];
-    format!("{}", count_paths_b(
-        &possible_moves,
-        &visited_small_caves,
-        vec!["start".to_string()],
-    ))
+    format!(
+        "{}",
+        count_paths_b(
+            &possible_moves,
+            &visited_small_caves,
+            vec!["start".to_string()],
+        )
+    )
 }

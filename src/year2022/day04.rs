@@ -1,25 +1,4 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-    str::FromStr,
-};
-
-fn file_to_vec<T: FromStr>(file: File) -> Vec<Option<T>> {
-    let reader = BufReader::new(file);
-    let mut data = Vec::new();
-
-    for line in reader.lines() {
-        data.push({
-            let this = line.unwrap().parse::<T>();
-            match this {
-                Ok(t) => Some(t),
-                Err(_) => None,
-            }
-        });
-    }
-
-    data
-}
+use crate::utils::get_input_vec;
 
 fn get_contained_pairs(data: Vec<Option<String>>, day: &str) -> Vec<((i32, i32), (i32, i32))> {
     let mut contained_pairs = Vec::new();
@@ -51,7 +30,7 @@ fn get_contained_pairs(data: Vec<Option<String>>, day: &str) -> Vec<((i32, i32),
                     {
                         contained_pairs.push(pair);
                     }
-                },
+                }
                 "b" => {
                     if (pair.0 .0 >= pair.1 .0 && pair.0 .0 <= pair.1 .1)
                         || (pair.0 .1 >= pair.1 .0 && pair.0 .1 <= pair.1 .1)
@@ -60,10 +39,9 @@ fn get_contained_pairs(data: Vec<Option<String>>, day: &str) -> Vec<((i32, i32),
                     {
                         contained_pairs.push(pair);
                     }
-                },
+                }
                 _ => {}
             }
-            
         }
     }
 
@@ -71,14 +49,12 @@ fn get_contained_pairs(data: Vec<Option<String>>, day: &str) -> Vec<((i32, i32),
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2022/day04_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<String>(file);
+    let data = get_input_vec::<String>("src/year2022/day04_input.txt");
     format!("{}", get_contained_pairs(data, "a").len())
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2022/day04_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<String>(file);
+    let data = get_input_vec::<String>("src/year2022/day04_input.txt");
     format!("{}", get_contained_pairs(data, "b").len())
 }
 

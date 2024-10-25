@@ -1,4 +1,4 @@
-use std::{fs::File, io::Read};
+use crate::utils::get_input_string;
 
 fn get_floor(instructions: String) -> i32 {
     // start at floor 0
@@ -36,18 +36,12 @@ fn get_basement_position(instructions: String) -> i32 {
 }
 
 pub fn solution_a() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day01_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day01_input.txt");
     format!("{}", get_floor(data))
 }
 
 pub fn solution_b() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day01_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day01_input.txt");
     format!("{}", get_basement_position(data))
 }
 

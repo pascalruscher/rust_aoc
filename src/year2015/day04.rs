@@ -1,5 +1,6 @@
 use md5::{Digest, Md5};
-use std::{fs::File, io::Read};
+
+use crate::utils::get_input_string;
 
 fn find_number(data: String, step: i32) -> usize {
     let mut i = 0;
@@ -24,10 +25,7 @@ fn find_number(data: String, step: i32) -> usize {
 }
 
 fn solution(step: i32) -> usize {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day04_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day04_input.txt");
     find_number(data, step)
 }
 

@@ -1,8 +1,6 @@
-use std::{
-    collections::HashMap,
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::{collections::HashMap, io::BufRead};
+
+use crate::utils::get_input_reader;
 
 pub fn get_start_end(point_1: u32, point_2: u32) -> (u32, u32) {
     if point_1 < point_2 {
@@ -22,8 +20,7 @@ pub fn get_calc_num(point_1: u32, point_2: u32) -> i8 {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day05_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day05_input.txt");
 
     let mut points: HashMap<String, u32> = HashMap::new();
 
@@ -63,8 +60,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day05_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day05_input.txt");
 
     let mut points: HashMap<String, u32> = HashMap::new();
 

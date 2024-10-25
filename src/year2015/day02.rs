@@ -1,4 +1,4 @@
-use std::{fs::File, io::Read};
+use crate::utils::get_input_string;
 
 fn calculate_square_feet(length: i32, width: i32, height: i32) -> i32 {
     let sides: [i32; 3] = [length * width, width * height, height * length];
@@ -44,18 +44,12 @@ fn get_total_feet(data: String) -> i32 {
 }
 
 pub fn solution_a() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day02_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day02_input.txt");
     format!("{}", get_total_square_feet(data))
 }
 
 pub fn solution_b() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day02_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day02_input.txt");
     format!("{}", get_total_feet(data))
 }
 
@@ -74,7 +68,7 @@ mod tests {
         // A present with dimensions `1x1x10` requires a total of `43` square feet
         assert_eq!(calculate_square_feet(1, 1, 10), 43);
     }
-    
+
     #[test]
     fn calculate_feet_1() {
         // A present with dimensions `2x3x4` requires a total of `34` feet

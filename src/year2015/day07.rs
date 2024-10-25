@@ -1,4 +1,6 @@
-use std::{collections::HashMap, fs::File, io::Read};
+use std::collections::HashMap;
+
+use crate::utils::get_input_string;
 
 #[derive(Debug, Clone)]
 struct Instruction {
@@ -95,20 +97,14 @@ fn get_wire_values(wires: HashMap<String, Instruction>) -> HashMap<String, u16> 
 }
 
 pub fn solution_a() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day07_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day07_input.txt");
     let wires = parse(data);
     let wire_values = get_wire_values(wires.clone());
     format!("{}", wire_values.get("a").unwrap().to_owned())
 }
 
 pub fn solution_b() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day07_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day07_input.txt");
     let mut wires = parse(data);
     let mut wire_values = get_wire_values(wires.clone());
     let solution_a = wire_values.get("a");

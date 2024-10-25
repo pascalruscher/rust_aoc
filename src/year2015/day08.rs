@@ -1,5 +1,6 @@
 use regex::Regex;
-use std::{fs::File, io::Read};
+
+use crate::utils::get_input_string;
 
 fn get_char_count_a(data: String) -> usize {
     let mut char_count: usize = 0;
@@ -24,18 +25,12 @@ fn get_char_count_b(data: String) -> usize {
 }
 
 pub fn solution_a() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day08_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day07_input.txt");
     format!("{}", get_char_count_a(data))
 }
 
 pub fn solution_b() -> String {
-    let mut data = String::new();
-    let mut file = File::open("src/year2015/day08_input.txt").expect("Error on File::open");
-    file.read_to_string(&mut data)
-        .expect("Error on read_to_string");
+    let data = get_input_string("src/year2015/day07_input.txt");
     format!("{}", get_char_count_b(data))
 }
 
