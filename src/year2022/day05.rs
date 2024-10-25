@@ -95,14 +95,14 @@ fn get_top_crates(crates: Vec<Vec<char>>) -> String {
 }
 
 pub fn solution_a() -> String {
-    let mut data = get_input_vec::<String>("src/year2022/day04_input.txt");
+    let mut data = get_input_vec::<String>("src/year2022/day05_input.txt");
     let mut crates = init_crates(&mut data);
     move_crates_a(&mut crates, &mut data);
     get_top_crates(crates)
 }
 
 pub fn solution_b() -> String {
-    let mut data = get_input_vec::<String>("src/year2022/day04_input.txt");
+    let mut data = get_input_vec::<String>("src/year2022/day05_input.txt");
     let mut crates = init_crates(&mut data);
     move_crates_b(&mut crates, &mut data);
     get_top_crates(crates)

@@ -25,12 +25,12 @@ fn get_char_count_b(data: String) -> usize {
 }
 
 pub fn solution_a() -> String {
-    let data = get_input_string("src/year2015/day07_input.txt");
+    let data = get_input_string("src/year2015/day08_input.txt");
     format!("{}", get_char_count_a(data))
 }
 
 pub fn solution_b() -> String {
-    let data = get_input_string("src/year2015/day07_input.txt");
+    let data = get_input_string("src/year2015/day08_input.txt");
     format!("{}", get_char_count_b(data))
 }
 
