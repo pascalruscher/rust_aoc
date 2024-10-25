@@ -1,8 +1,4 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-    str::FromStr,
-};
+use crate::utils::get_input_vec;
 
 enum Shape {
     Rock,
@@ -34,23 +30,6 @@ impl RoundResult {
             RoundResult::Win => 6,
         }
     }
-}
-
-fn file_to_vec<T: FromStr>(file: File) -> Vec<Option<T>> {
-    let reader = BufReader::new(file);
-    let mut data = Vec::new();
-
-    for line in reader.lines() {
-        data.push({
-            let this = line.unwrap().parse::<T>();
-            match this {
-                Ok(t) => Some(t),
-                Err(_) => None,
-            }
-        });
-    }
-
-    data
 }
 
 fn calc_round_a(instruction: String) -> i32 {
@@ -143,7 +122,7 @@ fn get_score(data: Vec<Option<String>>, day: &str) -> i32 {
             match day {
                 "a" => {
                     score += calc_round_a(instruction);
-                },
+                }
                 "b" => {
                     score += calc_round_b(instruction);
                 }
@@ -155,16 +134,13 @@ fn get_score(data: Vec<Option<String>>, day: &str) -> i32 {
     score
 }
 
-
 pub fn solution_a() -> String {
-    let file = File::open("src/year2022/day02_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<String>(file);
+    let data = get_input_vec::<String>("src/year2022/day02_input.txt");
     format!("{}", get_score(data, "a"))
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2022/day02_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<String>(file);
+    let data = get_input_vec::<String>("src/year2022/day02_input.txt");
     format!("{}", get_score(data, "b"))
 }
 

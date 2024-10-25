@@ -1,11 +1,9 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::io::BufRead;
+
+use crate::utils::get_input_reader;
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day05_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day06_input.txt");
 
     let mut input = String::new();
     reader.read_line(&mut input).unwrap();
@@ -32,8 +30,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day06_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day06_input.txt");
 
     let mut input = String::new();
     reader.read_line(&mut input).unwrap();

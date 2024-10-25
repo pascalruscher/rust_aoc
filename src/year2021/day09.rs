@@ -1,8 +1,6 @@
-use std::{
-    collections::HashMap,
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::{collections::HashMap, io::BufRead};
+
+use crate::utils::get_input_reader;
 
 pub fn explore_basin(
     grid: &HashMap<i32, HashMap<i32, u8>>,
@@ -30,8 +28,7 @@ pub fn explore_basin(
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day08_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day09_input.txt");
     let rows = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let mut grid: HashMap<usize, HashMap<usize, u8>> = HashMap::new();
@@ -63,8 +60,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day08_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day09_input.txt");
     let rows = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let mut grid: HashMap<i32, HashMap<i32, u8>> = HashMap::new();

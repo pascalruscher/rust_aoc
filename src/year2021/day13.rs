@@ -1,8 +1,9 @@
 use std::{
     collections::{HashMap, VecDeque},
-    fs::File,
-    io::{BufRead, BufReader},
+    io::BufRead,
 };
+
+use crate::utils::get_input_reader;
 
 pub fn fold_grid(grid: HashMap<(i32, i32), char>, fold: (char, i32)) -> HashMap<(i32, i32), char> {
     let mut new_grid: HashMap<(i32, i32), char> = HashMap::new();
@@ -19,8 +20,7 @@ pub fn fold_grid(grid: HashMap<(i32, i32), char>, fold: (char, i32)) -> HashMap<
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day13_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day13_input.txt");
     let mut lines = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let mut fold_que: VecDeque<(char, i32)> = VecDeque::new();
@@ -55,8 +55,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day13_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day13_input.txt");
     let mut lines = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let mut fold_que: VecDeque<(char, i32)> = VecDeque::new();

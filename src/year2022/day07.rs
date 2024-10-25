@@ -1,9 +1,6 @@
-use std::{
-    collections::HashMap,
-    fs::File,
-    io::{BufRead, BufReader},
-    str::FromStr,
-};
+use std::collections::HashMap;
+
+use crate::utils::get_input_vec;
 
 #[derive(Debug, Clone)]
 struct Folder {
@@ -24,22 +21,6 @@ impl Folder {
         self.files.sort_unstable();
         self.files.dedup();
     }
-}
-
-fn file_to_vec<T: FromStr>(file: File) -> Vec<Option<T>> {
-    let reader = BufReader::new(file);
-    let mut data = Vec::new();
-
-    for (_, line) in reader.lines().enumerate() {
-        data.push({
-            let this = line.unwrap().parse::<T>();
-            match this {
-                Ok(t) => Some(t),
-                Err(_) => None,
-            }
-        });
-    }
-    data
 }
 
 fn create_tree(data: Vec<Option<String>>) -> HashMap<String, Folder> {
@@ -83,10 +64,7 @@ fn create_tree(data: Vec<Option<String>>) -> HashMap<String, Folder> {
                                 .unwrap()
                                 .add_file((
                                     instruction_parsed[1].to_string(),
-                                    instruction_parsed[0]
-                                        .to_string()
-                                        .parse::<u64>()
-                                        .unwrap(),
+                                    instruction_parsed[0].to_string().parse::<u64>().unwrap(),
                                 ));
                         }
                     }
@@ -110,8 +88,7 @@ fn calculate_size(folders: &HashMap<String, Folder>, folder_name: &String) -> u6
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2022/day07_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<String>(file);
+    let data = get_input_vec::<String>("src/year2022/day07_input.txt");
 
     let mut folder_tree = create_tree(data);
     let mut solution = 0;
@@ -129,8 +106,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2022/day07_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<String>(file);
+    let data = get_input_vec::<String>("src/year2022/day07_input.txt");
 
     let mut folder_tree = create_tree(data);
     let space_needed = 30_000_000 - (70_000_000 - calculate_size(&folder_tree, &"/".to_string()));

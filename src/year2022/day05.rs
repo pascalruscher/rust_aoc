@@ -1,25 +1,4 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-    str::FromStr,
-};
-
-fn file_to_vec<T: FromStr>(file: File) -> Vec<Option<T>> {
-    let reader = BufReader::new(file);
-    let mut data = Vec::new();
-
-    for line in reader.lines() {
-        data.push({
-            let this = line.unwrap().parse::<T>();
-            match this {
-                Ok(t) => Some(t),
-                Err(_) => None,
-            }
-        });
-    }
-
-    data
-}
+use crate::utils::get_input_vec;
 
 fn init_crates(data: &mut Vec<Option<String>>) -> Vec<Vec<char>> {
     let mut initial_state = Vec::new();
@@ -116,16 +95,14 @@ fn get_top_crates(crates: Vec<Vec<char>>) -> String {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2022/day05_input.txt").expect("Error on File::open");
-    let mut data = file_to_vec::<String>(file);
+    let mut data = get_input_vec::<String>("src/year2022/day05_input.txt");
     let mut crates = init_crates(&mut data);
     move_crates_a(&mut crates, &mut data);
     get_top_crates(crates)
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2022/day05_input.txt").expect("Error on File::open");
-    let mut data = file_to_vec::<String>(file);
+    let mut data = get_input_vec::<String>("src/year2022/day05_input.txt");
     let mut crates = init_crates(&mut data);
     move_crates_b(&mut crates, &mut data);
     get_top_crates(crates)

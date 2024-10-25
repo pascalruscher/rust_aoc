@@ -1,24 +1,4 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-    str::FromStr,
-};
-
-fn file_to_vec<T: FromStr>(file: File) -> Vec<Option<T>> {
-    let reader = BufReader::new(file);
-    let mut data = Vec::new();
-
-    for (_, line) in reader.lines().enumerate() {
-        data.push({
-            let this = line.unwrap().parse::<T>();
-            match this {
-                Ok(t) => Some(t),
-                Err(_) => None,
-            }
-        });
-    }
-    data
-}
+use crate::utils::get_input_vec;
 
 fn get_total_calories(data: Vec<Option<i32>>, day: &str) -> i32 {
     let mut total_calories: Vec<i32> = Vec::new();
@@ -42,19 +22,17 @@ fn get_total_calories(data: Vec<Option<i32>>, day: &str) -> i32 {
     match day {
         "a" => total_calories[0],
         "b" => total_calories[0] + total_calories[1] + total_calories[2],
-        _ => 0
+        _ => 0,
     }
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2022/day01_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<i32>(file);
+    let data = get_input_vec::<i32>("src/year2022/day01_input.txt");
     format!("{}", get_total_calories(data, "a"))
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2022/day01_input.txt").expect("Error on File::open");
-    let data = file_to_vec::<i32>(file);
+    let data = get_input_vec::<i32>("src/year2022/day01_input.txt");
     format!("{}", get_total_calories(data, "b"))
 }
 

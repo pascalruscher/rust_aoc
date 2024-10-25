@@ -1,8 +1,6 @@
-use std::{
-    collections::VecDeque,
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::{collections::VecDeque, io::BufRead};
+
+use crate::utils::get_input_reader;
 
 pub fn find_shortest_count(grid: Vec<Vec<u32>>) -> u32 {
     let directions_x: Vec<i8> = vec![-1, 0, 1, 0];
@@ -52,8 +50,7 @@ pub fn find_shortest_count(grid: Vec<Vec<u32>>) -> u32 {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day15_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day15_input.txt");
 
     let mut grid: Vec<Vec<u32>> = Vec::new();
     for line in reader.lines() {
@@ -68,8 +65,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day15_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day15_input.txt");
 
     let mut initial_grid: Vec<Vec<u32>> = Vec::new();
     for line in reader.lines() {

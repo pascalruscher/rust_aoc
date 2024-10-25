@@ -1,7 +1,6 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::io::BufRead;
+
+use crate::utils::get_input_reader;
 
 pub fn calc_x_velo(x: i32) -> i32 {
     (x as f32 * 2.).sqrt() as i32
@@ -20,8 +19,7 @@ pub fn calc_coord(velo: i32) -> i32 {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day17_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day17_input.txt");
 
     let mut input = String::new();
     reader.read_line(&mut input).unwrap();
@@ -54,8 +52,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day17_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day17_input.txt");
 
     let mut input = String::new();
     reader.read_line(&mut input).unwrap();
@@ -120,7 +117,6 @@ pub fn solution_b() -> String {
     }
     format!("{}", hit_count)
 }
-
 
 #[cfg(test)]
 mod tests {

@@ -1,7 +1,6 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::io::BufRead;
+
+use crate::utils::get_input_reader;
 
 pub fn reduce_to_one(higher_count: bool, bytes: &Vec<String>) -> String {
     let mut bytes_left = bytes.to_owned();
@@ -47,8 +46,7 @@ pub fn add_bits_count(mut bits: Vec<Vec<i32>>, line: String) -> Vec<Vec<i32>> {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day03_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day03_input.txt");
 
     let mut first_line = String::new();
     reader.read_line(&mut first_line).unwrap();
@@ -72,16 +70,21 @@ pub fn solution_a() -> String {
             epsilon.push('0');
         }
     }
-    format!("{}", i32::from_str_radix(&gamma, 2).unwrap() * i32::from_str_radix(&epsilon, 2).unwrap())
+    format!(
+        "{}",
+        i32::from_str_radix(&gamma, 2).unwrap() * i32::from_str_radix(&epsilon, 2).unwrap()
+    )
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day03_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day03_input.txt");
     let bytes = reader.lines().map(|s| s.unwrap()).collect::<Vec<_>>();
 
     let oxygen = reduce_to_one(true, &bytes);
     let scrubber = reduce_to_one(false, &bytes);
 
-    format!("{}", i32::from_str_radix(&oxygen, 2).unwrap() * i32::from_str_radix(&scrubber, 2).unwrap())
+    format!(
+        "{}",
+        i32::from_str_radix(&oxygen, 2).unwrap() * i32::from_str_radix(&scrubber, 2).unwrap()
+    )
 }

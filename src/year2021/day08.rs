@@ -1,7 +1,6 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader}, collections::HashMap,
-};
+use std::{collections::HashMap, io::BufRead};
+
+use crate::utils::get_input_reader;
 
 pub fn sort_chars(str: &str) -> String {
     let mut chars: Vec<char> = str.chars().collect();
@@ -36,8 +35,7 @@ pub fn get_diff_chars(string_1: &str, string_2: &str) -> Vec<char> {
 }
 
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day08_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day08_input.txt");
 
     let mut digit_count = 0;
     for line in reader.lines() {
@@ -55,8 +53,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day08_input.txt").unwrap();
-    let reader = BufReader::new(file);
+    let reader = get_input_reader("src/year2021/day08_input.txt");
 
     let mut solution: u32 = 0;
     for line in reader.lines() {

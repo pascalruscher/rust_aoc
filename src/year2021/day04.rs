@@ -1,7 +1,6 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::io::BufRead;
+
+use crate::utils::get_input_reader;
 
 pub fn get_winner_board_a(
     mut boards: Vec<Vec<Vec<i8>>>,
@@ -74,10 +73,8 @@ pub fn get_winner_board_b(
     return Err("No board won");
 }
 
-
 pub fn solution_a() -> String {
-    let file = File::open("src/year2021/day04_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day04_input.txt");
 
     let mut first_line = String::new();
     reader.read_line(&mut first_line).unwrap();
@@ -126,8 +123,7 @@ pub fn solution_a() -> String {
 }
 
 pub fn solution_b() -> String {
-    let file = File::open("src/year2021/day04_input.txt").unwrap();
-    let mut reader = BufReader::new(file);
+    let mut reader = get_input_reader("src/year2021/day04_input.txt");
 
     let mut first_line = String::new();
     reader.read_line(&mut first_line).unwrap();
