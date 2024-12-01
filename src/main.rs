@@ -3,6 +3,7 @@ mod year2015;
 mod year2017;
 mod year2021;
 mod year2022;
+mod year2024;
 
 use clap::Parser;
 
@@ -16,7 +17,7 @@ struct Args {
 }
 
 fn main() {
-    let available_years = ["2015", "2017", "2021", "2022"];
+    let available_years = ["2015", "2017", "2021", "2022", "2024"];
     let args = Args::parse();
 
     if args.year.len() != 4 {
@@ -59,6 +60,9 @@ fn main() {
         }
         "2022" => {
             println!("{}", year2022::solution(&day));
+        }
+        "2024" => {
+            println!("{}", year2024::solution(&day));
         }
         _ => {}
     }
